@@ -20,8 +20,10 @@ public class TransactionPropagationEventListener {
     @EventListener
     public void eventHandler(EventListener_TransactionEvent event) {
         User user = event.getUser();
+        System.out.println(">>>>>>>>>>>>>>> dirty checking 수정");
         user.updateUser("dirty checking 수정");
 
+        System.out.println(">>>>>>>>>>>>>>> listener 생성");
         userRepository.save(new User("listener 생성"));
     }
 
@@ -29,16 +31,20 @@ public class TransactionPropagationEventListener {
     @EventListener
     public void eventHandler(EventListener_NewTransactionEvent event) {
         User user = event.getUser();
+        System.out.println(">>>>>>>>>>>>>>> dirty checking 수정");
         user.updateUser("dirty checking 수정");
 
+        System.out.println(">>>>>>>>>>>>>>> listener 생성");
         userRepository.save(new User("listener 생성"));
     }
 
     @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
     public void eventHandler(BEFORE_COMMIT_TransactionEvent event) {
         User user = event.getUser();
+        System.out.println(">>>>>>>>>>>>>>> dirty checking 수정");
         user.updateUser("dirty checking 수정");
 
+        System.out.println(">>>>>>>>>>>>>>> listener 생성");
         userRepository.save(new User("listener 생성"));
     }
 
@@ -46,16 +52,20 @@ public class TransactionPropagationEventListener {
     @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
     public void eventHandler(BEFORE_COMMIT_NewTransactionEvent event) {
         User user = event.getUser();
+        System.out.println(">>>>>>>>>>>>>>> dirty checking 수정");
         user.updateUser("dirty checking 수정");
 
+        System.out.println(">>>>>>>>>>>>>>> listener 생성");
         userRepository.save(new User("listener 생성"));
     }
 
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMPLETION)
     public void eventHandler(AFTER_COMPLETION_TransactionEvent event) {
         User user = event.getUser();
+        System.out.println(">>>>>>>>>>>>>>> dirty checking 수정");
         user.updateUser("dirty checking 수정");
 
+        System.out.println(">>>>>>>>>>>>>>> listener 생성");
         userRepository.save(new User("listener 생성"));
     }
 
@@ -63,8 +73,10 @@ public class TransactionPropagationEventListener {
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMPLETION)
     public void eventHandler(AFTER_COMPLETION_NewTransactionEvent event) {
         User user = event.getUser();
+        System.out.println(">>>>>>>>>>>>>>> dirty checking 수정");
         user.updateUser("dirty checking 수정");
 
+        System.out.println(">>>>>>>>>>>>>>> listener 생성");
         userRepository.save(new User("listener 생성"));
     }
 }
